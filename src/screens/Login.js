@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         marginVertical: 10, 
     },
     textButton:{
-        color: '#fff'
+        color: '#ccc'
     }
 })
 

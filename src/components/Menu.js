@@ -5,6 +5,8 @@ import { createDrawerNavigator} from '@react-navigation/drawer';
 import Home from '../screens/Home';
 import Register from '../screens/Register';
 import Login from '../screens/Login';
+import Profile from '../screens/Profile';
+
 import { auth } from '../firebase/config';
 
 
@@ -56,7 +58,7 @@ class Menu extends Component{
                 <Drawer.Navigator>
                     <Drawer.Screen name="Home" component={()=><Home />} />
                     <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)}/>} />
-                    <Drawer.Screen name="Login" component={()=><Login />}/>
+                    <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)}/>}/>
 
                 </Drawer.Navigator>
             </NavigationContainer>
