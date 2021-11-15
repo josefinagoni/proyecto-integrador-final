@@ -7,6 +7,8 @@ import Register from '../screens/Register';
 import Login from '../screens/Login';
 import { auth } from '../firebase/config';
 
+
+
 const Drawer = createDrawerNavigator();
 
 class Menu extends Component{
@@ -15,6 +17,27 @@ class Menu extends Component{
         this.state={
 
         }
+    }
+    componentDidMount(){
+        auth.onAuthStateChanged(user => {
+            if(user){
+                this.setState({
+                    loggedIn:true,
+                    user: user,
+                })
+            }
+        })
+    }
+
+    login(email,pass){
+        auth.signInWithEmailAndPassword(email,pass)
+            .then( response => {
+                this.setState({
+                    loggedIn: true,
+                    user:response.user,
+                })
+            })
+            .catch(e => console.log(e))
     }
 
     register(email, pass){
