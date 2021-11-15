@@ -10,7 +10,6 @@ import PostForm from '../screens/postForm';
 import { auth } from '../firebase/config';
 
 
-
 const Drawer = createDrawerNavigator();
 
 class Menu extends Component{
