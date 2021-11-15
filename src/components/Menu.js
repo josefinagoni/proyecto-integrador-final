@@ -5,6 +5,8 @@ import { createDrawerNavigator} from '@react-navigation/drawer';
 import Home from '../screens/Home';
 import Register from '../screens/Register';
 import Login from '../screens/Login';
+import { auth } from '../firebase/config';
+
 
 
 const Drawer = createDrawerNavigator();
