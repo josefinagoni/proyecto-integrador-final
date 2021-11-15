@@ -76,8 +76,8 @@ class Menu extends Component{
             <NavigationContainer>
                 {this.state.loggedIn == false ? 
             <Drawer.Navigator>
+                 <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)}/>}/>
                 <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)} registrado={this.state.registrado} error={this.state.error}/>} />
-                <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)}/>}/>
             </Drawer.Navigator> :
 
             <Drawer.Navigator>
