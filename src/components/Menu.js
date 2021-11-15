@@ -8,7 +8,6 @@ import Login from '../screens/Login';
 import { auth } from '../firebase/config';
 
 
-
 const Drawer = createDrawerNavigator();
 
 class Menu extends Component{
