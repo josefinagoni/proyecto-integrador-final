@@ -40,13 +40,23 @@ class Menu extends Component{
             .catch(e => console.log(e))
     }
 
+    register(email, pass){
+        auth.createUserWithEmailAndPassword(email, pass)
+            .then( ()=>{
+                console.log('Registrado');
+            })
+            .catch( error => {
+                console.log(error);
+            })
+    }
+
     render(){
         return(
             <NavigationContainer>
                 <Drawer.Navigator>
                     <Drawer.Screen name="Home" component={()=><Home />} />
-                    <Drawer.Screen name="Registro" component={()=><Register />} />
-                    <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)} />}/>
+                    <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)}/>} />
+                    <Drawer.Screen name="Login" component={()=><Login />}/>
 
                 </Drawer.Navigator>
             </NavigationContainer>
