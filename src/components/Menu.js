@@ -45,6 +45,16 @@ class Menu extends Component{
             })
             .catch(e => console.log(e))
     }
+    logout(){
+        auth.signOut()
+            .then( (res)=>{
+                this.setState({
+                    user:'',
+                    loggedIn: false,
+                })
+            })
+            .catch()
+    }
 
     register(email, pass){
         auth.createUserWithEmailAndPassword(email, pass)
