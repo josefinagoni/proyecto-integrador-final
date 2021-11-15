@@ -67,7 +67,7 @@ class Menu extends Component{
                 {this.state.loggedIn == false ? 
             <Drawer.Navigator>
                 <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)} registrado={this.state.registrado} error={this.state.error}/>} />
-                <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)}/>}/>
+                <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)} logueado={this.state.loggedIn}/>}/>
             </Drawer.Navigator> :
 
             <Drawer.Navigator>
@@ -75,7 +75,7 @@ class Menu extends Component{
                 <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
                 <Drawer.Screen name="Perfil" component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
             </Drawer.Navigator> }
-            
+
             </NavigationContainer>
         )
     }

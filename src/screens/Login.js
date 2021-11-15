@@ -27,9 +27,15 @@ class Login extends Component{
                     keyboardType='email-address'
                     secureTextEntry={true}
                 />
-                <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
+
+                {this.props.logueado ? 
+                 <Text style={styles.button}> Gracias! Usted ya ha sido logueado </Text> :
+            
+                 <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
+            }
+               
             </View>
         )
     }
