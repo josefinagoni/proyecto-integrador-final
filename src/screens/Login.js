@@ -34,7 +34,7 @@ class Login extends Component{
                  <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
-            }
+                }
                
             </View>
         )
@@ -57,9 +57,22 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         marginVertical: 10, 
     },
+    button:{
+        backgroundColor:'#28a745',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#28a745'
+    },
     textButton:{
         color: '#ccc'
-    }
+    },
+    
+
+
 })
 
 export default Login
