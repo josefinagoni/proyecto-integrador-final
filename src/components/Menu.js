@@ -15,6 +15,8 @@ class Menu extends Component{
     constructor(){
         super();
         this.state={
+            registrado: false,
+            error: '',
 
         }
     }
@@ -42,11 +44,16 @@ class Menu extends Component{
 
     register(email, pass){
         auth.createUserWithEmailAndPassword(email, pass)
-            .then( ()=>{
-                console.log('Registrado');
-            })
+            .then( (response) => {
+                this.setState({
+                    registrado: true
+                })
+            }
+            )
             .catch( error => {
-                console.log(error);
+               this.setState({
+                   error: error
+               });
             })
     }
 
@@ -55,7 +62,7 @@ class Menu extends Component{
             <NavigationContainer>
                 <Drawer.Navigator>
                     <Drawer.Screen name="Home" component={()=><Home />} />
-                    <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)}/>} />
+                    <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)} registrado={this.state.registrado} error={this.state.error}/>} />
                     <Drawer.Screen name="Login" component={()=><Login />}/>
 
                 </Drawer.Navigator>

@@ -14,7 +14,7 @@ class Login extends Component{
     render(){
         return(
             <View style={styles.formContainer}>
-                <Text> SOY EL lOGIN</Text> 
+                <Text> Login</Text> 
                 <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({email: text})}
