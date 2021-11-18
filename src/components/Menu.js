@@ -5,7 +5,7 @@ import { createDrawerNavigator} from '@react-navigation/drawer';
 import Home from '../screens/Home';
 import Register from '../screens/Register';
 import Login from '../screens/Login';
-import Perfil from '../screens/Profile'
+import Profile from '../screens/Profile'
 import PostForm from '../screens/postForm';
 import { auth } from '../firebase/config';
 
