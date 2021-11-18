@@ -79,11 +79,11 @@ class Post extends Component{
             {
                 this.state.myLike == false ?
             
-            <TouchableOpacity onPress={()=>this.darLike()}>
+            <TouchableOpacity style={styles.button} onPress={()=>this.darLike()}>
                  <Text >Me gusta</Text>
             </TouchableOpacity>  :
             
-            <TouchableOpacity onPress={()=>this.borrarLike()}>
+            <TouchableOpacity style={styles.buttonNo} onPress={()=>this.borrarLike()}>
                <Text >Quitar like</Text>
            </TouchableOpacity>
              
@@ -125,9 +125,10 @@ class Post extends Component{
             </View>
         )
     }
+  }
 
-}
-const styles = StyleSheet.create({
+
+  const styles = StyleSheet.create({
     contanier:{
         marginBottom: 20,
         borderRadius:4,
@@ -155,7 +156,10 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: '#28a745'
     },
-
+    textButton:{
+        color: '#ccc'
+    },
 })
+
 
 export default Post;

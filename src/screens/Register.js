@@ -36,8 +36,7 @@ class Register extends Component{
                 <Text style={styles.button}> Gracias! Usted ya ha sido registrado </Text> :
             
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}
-                disabled={this.state.email && this.state.password  != '' ? false:true}
- >
+                disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? true:false} >
                     <Text style={styles.textButton}>Registrarse</Text>      
                 </TouchableOpacity>
             }
