@@ -9,7 +9,8 @@ class PostForm extends Component{
         super(props)
         this.state={
             textoPost: '',
-            postSubido: false
+            postSubido: false,
+            showCamera: true
             
         }
     };
