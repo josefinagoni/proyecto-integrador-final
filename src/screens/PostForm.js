@@ -8,27 +8,24 @@ class PostForm extends Component{
         super(props)
         this.state={
             textoPost: '',
-            subido: false
+            postSubido: false
+            
         }
-    }
+    };
+
     submitPost(){
-        console.log('posteando...');
-        db.collection('posts').add({
-            owner: auth.currentUser.email,
-            texto: this.state.textoPost,
+        db.collection("posts").add({
+            owner:auth.currentUser.email,
             createdAt: Date.now(),
         })
-        .then( ()=>{
-            this.setState({
-                textoPost:'',
-                subido: true,
-
-            })
-            //Redirección
-            this.props.drawerProps.navigation.navigate('Home')
+        .then(() => {
+            console.log("Documento subido!");
         })
-        .catch()
+        .catch((error) => {
+            console.error("Error escribiendo el documento: ", error);
+        });
     }
+  ;
 
     render(){
         return(
@@ -42,7 +39,7 @@ class PostForm extends Component{
                     value={this.state.textoPost}
                 />
 
-                {this.state.subido ? 
+                {this.state.postSubido ? 
                 <Text style={styles.textButton}> Gracias su posteo ha sido creado</Text> :
                 
                 <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>

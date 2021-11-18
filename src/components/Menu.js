@@ -20,6 +20,7 @@ class Menu extends Component{
             error: '',
             loggedIn: false,
             user: '',
+           
 
         }
     }
@@ -81,7 +82,7 @@ class Menu extends Component{
 
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={()=><Home />} />
-                <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
+                <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps} />}/>
                 <Drawer.Screen name="Perfil" component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
             </Drawer.Navigator> }
 
