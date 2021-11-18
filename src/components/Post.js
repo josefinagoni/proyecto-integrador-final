@@ -74,7 +74,7 @@ class Post extends Component{
             <View style={styles.contanier}>
              <Text>Texto del post: {this.props.postData.data.texto}</Text>
              <Text>User: {this.props.postData.data.owner} </Text>  
-             <Text> Likes:{this.state.likes} </Text>
+             <Text>Likes:{this.state.likes} </Text>
 
             {
                 this.state.myLike == false ?
