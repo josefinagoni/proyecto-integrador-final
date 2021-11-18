@@ -14,7 +14,7 @@ class Register extends Component{
     render(){
         return(
             <View style={styles.formContainer}>
-                <Text> Registro </Text>
+                <Text style={styles.title}> Registro </Text>
                 <TextInput 
                     style={styles.input}
                     onChangeText={(text)=>this.setState({email: text})}
@@ -54,13 +54,29 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal: 10,
         marginTop: 20,
+        width: '50%',
+        height: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth:1,
+        borderColor: '#ccc',
+        borderStyle: 'solid',
+        borderRadius: 6,
+        marginLeft: 300,
         
         
     },
+    title:{
+    fontSize: 22,
+    textAlign: 'left',
+    color: 'black',
+    fontWeight: '600'
+    }, 
     input:{
         height:20,
         paddingVertical:15,
         paddingHorizontal: 10,
+        width: '100%',
         borderWidth:1,
         borderColor: '#ccc',
         borderStyle: 'solid',
@@ -75,7 +91,8 @@ const styles = StyleSheet.create({
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#28a745',
+        marginTop: 40,
     },
     textButton:{
         color: '#fff'

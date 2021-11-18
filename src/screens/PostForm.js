@@ -17,6 +17,7 @@ class PostForm extends Component{
         db.collection("posts").add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
+           
         })
         .then(() => {
             console.log("Documento subido!");
@@ -39,14 +40,16 @@ class PostForm extends Component{
                     value={this.state.textoPost}
                 />
 
-                {this.state.postSubido ? 
-                <Text style={styles.textButton}> Gracias su posteo ha sido creado</Text> :
+
+                { this.state.postSubido ? 
+                <Text style={styles.textButton}> Gracias su posteo ha sido creado </Text> : 
                 
                 <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
                     <Text style={styles.textButton}> Subir Post</Text>
                 </TouchableOpacity>
 
             }
+            
 
             </View>
         )
