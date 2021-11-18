@@ -20,6 +20,7 @@ class Menu extends Component{
             error: '',
             loggedIn: false,
             user: '',
+           
 
         }
     }
@@ -42,7 +43,12 @@ class Menu extends Component{
                     user:response.user,
                 })
             })
-            .catch(e => console.log(e))
+            .catch( message => {
+                this.setState({
+                    error: message
+                });
+             })
+
     }
     logout(){
         auth.signOut()
@@ -52,7 +58,7 @@ class Menu extends Component{
                     loggedIn: false,
                 })
             })
-            .catch()
+            .catch(e => console.log(e))
     }
 
     register(email, pass){
@@ -63,9 +69,9 @@ class Menu extends Component{
                 })
             }
             )
-            .catch( error => {
+            .catch( message => {
                this.setState({
-                   error: error
+                   error: message
                });
             })
     }
@@ -75,14 +81,14 @@ class Menu extends Component{
             <NavigationContainer>
                 {this.state.loggedIn == false ? 
             <Drawer.Navigator>
-                 <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)}/>}/>
                 <Drawer.Screen name="Registro" component={()=><Register register={(email, pass)=>this.register(email, pass)} registrado={this.state.registrado} error={this.state.error}/>} />
+                <Drawer.Screen name="Login" component={()=><Login login={(email, pass)=>this.login(email, pass)} logueado={this.state.loggedIn} error={this.state.error}/>}/>
             </Drawer.Navigator> :
 
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={()=><Home />} />
-                <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps}/>}/>
-                <Drawer.Screen name="Profile" component={()=><Profile userData={this.state.user} logout={()=>this.logout() } />} />
+                <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps} />}/>
+                <Drawer.Screen name="Perfil" component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
             </Drawer.Navigator> }
 
             </NavigationContainer>

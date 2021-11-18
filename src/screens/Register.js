@@ -40,7 +40,7 @@ class Register extends Component{
                     <Text style={styles.textButton}>Registrarse</Text>      
                 </TouchableOpacity>
             }
-                <Text style={styles.textError}> Error: {this.props.error} </Text>
+                <Text style={styles.textError}> {this.props.error.message} </Text>
             
             </View>
             

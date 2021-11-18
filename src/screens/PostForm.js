@@ -1,39 +1,49 @@
 import { NavigationRouteContext } from "@react-navigation/native";
 import React, {Component} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
-import { auth, db } from '../firebase/config'
+import { auth, db } from '../firebase/config';
+import MyCamera from "../components/myCamera";
 
 class PostForm extends Component{
     constructor(props){
         super(props)
         this.state={
             textoPost: '',
-            subido: false
+            postSubido: false
+            
         }
-    }
-    submitPost(){
-        console.log('posteando...');	
+    };
 
-        db.collection('posts').add({
-            owner: auth.currentUser.email,
-            texto: this.state.textoPost,
+    submitPost(){
+        db.collection("posts").add({
+            owner:auth.currentUser.email,
             createdAt: Date.now(),
         })
-        .then( ()=>{
-            this.setState({
-                textoPost:'',
-                subido: true,
-
-            })
-            //Redirección
-            this.props.drawerProps.navigation.navigate('Home')
+        .then(() => {
+            console.log("Documento subido!");
         })
-        .catch()
+        .catch((error) => {
+            console.error("Error escribiendo el documento: ", error);
+        });
     }
+  ;
+
+    onImageUpload(url){
+        this.setState({
+            showCamera: false,
+            url: url
+        })
+    }
+
 
     render(){
         return(
             <View style={styles.formContainer}>
+                {
+                    this.state.showCamera ?
+                    <MyCamera onImageUpload={(url)=>{this.onImageUpload(url)}}/>:
+
+              <View style={styles.formContainer}>
                 <TextInput 
                     style={styles.input}
                     onChangeText={(text)=> this.setState({textoPost: text})}
@@ -43,15 +53,16 @@ class PostForm extends Component{
                     value={this.state.textoPost}
                 />
 
-                {this.state.subido ? 
+                {this.state.postSubido ? 
                 <Text style={styles.textButton}> Gracias su posteo ha sido creado</Text> :
                 
                 <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
                     <Text style={styles.textButton}> Subir Post</Text>
                 </TouchableOpacity>
-
-            }
-
+                }
+               </View> 
+            }  
+                
             </View>
         )
     }
