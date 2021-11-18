@@ -8,6 +8,7 @@ class Login extends Component{
             email: '',
             password: '',
             error: '',
+            userName: '',
         }
     }
 
@@ -35,6 +36,8 @@ class Login extends Component{
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
                 }
+
+            <Text style={styles.textError}> {this.props.error.message} </Text>
                
             </View>
         )
@@ -70,6 +73,9 @@ const styles = StyleSheet.create({
     textButton:{
         color: '#ccc'
     },
+    textError:{
+        color: 'red'
+    }
     
 
 
