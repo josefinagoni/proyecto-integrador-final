@@ -72,7 +72,7 @@ class Post extends Component{
     render(){
         return(
             <View style={styles.contanier}>
-             <Text>Texto del post: {this.props.postData.data.texto}</Text>
+             <Text>Texto del post: {this.props.postData.data.textoPost}</Text>
              <Text>User: {this.props.postData.data.owner} </Text>  
              <Text>Likes:{this.state.likes} </Text>
 

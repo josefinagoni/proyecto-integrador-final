@@ -18,8 +18,10 @@ class PostForm extends Component{
         db.collection("posts").add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
+            textoPost: this.state.textoPost
         })
         .then(() => {
+            this.props.drawerProps.navigation.navigate("Home"),
             console.log("Documento subido!");
         })
         .catch((error) => {

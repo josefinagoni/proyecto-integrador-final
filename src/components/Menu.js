@@ -75,6 +75,7 @@ class Menu extends Component{
                });
             })
     }
+    search()
 
     render(){
         return(
@@ -88,7 +89,8 @@ class Menu extends Component{
             <Drawer.Navigator>
                 <Drawer.Screen name="Home" component={()=><Home />} />
                 <Drawer.Screen name ="New Post" component={(drawerProps)=><PostForm drawerProps={drawerProps} />}/>
-                <Drawer.Screen name="Perfil" component={()=><Perfil userData={this.state.user} logout={()=>this.logout() } />} />
+                <Drawer.Screen name="Profile" component={()=><Profile userData={this.state.user} logout={()=>this.logout() } />} />
+                <Drawer.Screen name = "Search" component={() => <Search />} />
             </Drawer.Navigator> }
 
             </NavigationContainer>
