@@ -9,7 +9,8 @@ class PostForm extends Component{
         super(props)
         this.state={
             textoPost: '',
-            postSubido: false
+            postSubido: false,
+            showCamera: true
             
         }
     };
@@ -55,13 +56,18 @@ class PostForm extends Component{
                     value={this.state.textoPost}
                 />
 
-                {this.state.postSubido ? 
-                <Text style={styles.textButton}> Gracias su posteo ha sido creado</Text> :
+
+                { this.state.postSubido ? 
+                <Text style={styles.textButton}> Gracias su posteo ha sido creado </Text> : 
                 
                 <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
                     <Text style={styles.textButton}> Subir Post</Text>
                 </TouchableOpacity>
-                }
+
+            }
+            
+
+                
                </View> 
             }  
                 

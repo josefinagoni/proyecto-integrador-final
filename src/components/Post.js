@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList,} from 'react-native';
 import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
+import { Icon } from 'react-native-elements';
 
 class Post extends Component{
     constructor(props){
@@ -10,15 +11,14 @@ class Post extends Component{
             likes: 0,
             myLike: false,
             showModal: false,
-            comment: ''
+            comment: '',
+            comentarios: [],
+            cantComments: 0,
+            
+            
         }
     }
 
-//componentDidMount(){
-   // if (this.props.postData.data.likes.length) {
-            
- // }
-//}
 
     darLike(){
         db.collection('posts').doc(this.props.postData.id).update({
@@ -64,32 +64,48 @@ class Post extends Component{
         }
         //identifacar el documento que queremos modificar.
          db.collection('posts').doc(this.props.postData.id).update({
-           comments:firebase.firestore.FieldValue.arrayUnion(oneComment)
+           comment:firebase.firestore.FieldValue.arrayUnion(oneComment)
         })
+        .then( res =>{
+            this.setState({
+                comment:'',
+                cantComments: this.state.cantComments + 1
+            })
+        })
+        .catch(e => console.log(e))
 
     }
+
 
     render(){
         return(
             <View style={styles.contanier}>
-             <Text>Texto del post: {this.props.postData.data.textoPost}</Text>
-             <Text>User: {this.props.postData.data.owner} </Text>  
-             <Text>Likes:{this.state.likes} </Text>
+             <Text style={styles.infoPost}>Texto del post: {this.props.postData.data.texto}</Text>
+             <Text style={styles.infoPost}>User: {this.props.postData.data.owner} </Text>  
+             <Text style={styles.infoPost}> Likes:{this.state.likes} </Text>
+             <Text style={styles.infoPost}> Comentarios: {this.state.cantComments} </Text>
+             
+                <TouchableOpacity onPress={()=> this.props.borrar(id)}> 
+                    <Text style={styles.infoPost}> Borrar Posteo</Text>
+                </TouchableOpacity> 
 
             {
                 this.state.myLike == false ?
             
-            <TouchableOpacity style={styles.button} onPress={()=>this.darLike()}>
-                 <Text >Me gusta</Text>
+            <TouchableOpacity style={styles.likeSection}  onPress={()=>this.darLike()}>
+                 <Icon style={styles.heartIcon} name="heart-outline" type="ionicon" size={20} color="#000"/>
+                 <Text > Me gusta</Text>
             </TouchableOpacity>  :
             
-            <TouchableOpacity style={styles.buttonNo} onPress={()=>this.borrarLike()}>
+            <TouchableOpacity  style={styles.likeSection} onPress={()=>this.borrarLike()}>
+               <Icon style={styles.heartIcon} name="heart" type="ionicon" size={20} color="red"/>
                <Text >Quitar like</Text>
            </TouchableOpacity>
              
             }
+
             <TouchableOpacity onPress={()=>this.showModal()}>
-                <Text>Ver Comentarios</Text>
+                <Text style={styles.infoPost} >Ver Comentarios</Text>
             </TouchableOpacity>
 
             {/* Modal para comentarios */}
@@ -98,25 +114,41 @@ class Post extends Component{
                     visible={this.state.showModal}
                     animationType='slide'
                     transparent={false}
+                    
                 >   
+
+                <View style={styles.modal}>
+
                     <TouchableOpacity onPress={()=>this.hideModal()}>
-                        <Text>X</Text>
+                        <Text style={styles.borrarC}>X</Text>
                     </TouchableOpacity> 
-                    <Text>Dentro del modal</Text>
+
+                    <Text style={styles.title}>Comentarios</Text>
+                    
+                    {/* Lista de comentarios */}
+                    <FlatList 
+                        data= {this.props.postData.data.comment}
+                        keyExtractor = { oneComment => oneComment.id}
+                        renderItem = { ({item}) => <Text> @{item.author}: {item.comment}</Text> } 
+                        style={styles.cadaComment}
+                        // //Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+                    />
+
 
                     {/* Formulario para nuevo comentarios */}
                     <View>
-                        <TextInput placeholder="Comentar..."
+                        <TextInput placeholder="Escribe tu comentario"
                             keyboardType="default"
                             multiline
                             onChangeText={text => this.setState({comment: text})}
                             value={this.state.comment}
+                            style={styles.comentar}
                         />
-                        <TouchableOpacity onPress={()=>{this.guardarComentario()}}>
-                            <Text>Guadar comentario</Text>
+                        <TouchableOpacity style={styles.button} onPress={()=>{this.guardarComentario()}}>
+                            <Text style={styles.textButton}>Comentar</Text>
                         </TouchableOpacity>
                     </View>
-
+                    </View>
                 </Modal>    :
                 <Text></Text>
             } 
@@ -137,14 +169,15 @@ class Post extends Component{
         padding: 10,
     },
     button:{
-        backgroundColor:'#28a745',
+        backgroundColor:'#7b68ee',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#7b68ee',
+        marginTop: 20,
     },
     buttonNo:{
         backgroundColor:'red',
@@ -159,6 +192,61 @@ class Post extends Component{
     textButton:{
         color: '#ccc'
     },
+    modal:{
+       flex: 2,
+       flexDirection: 'column',
+       justifyContent: 'center',
+       alignItems: 'center',
+        backgroundColor: '#48d1cc',
+        width: 300,
+        height: 100,
+       
+    },
+    borrarC:{
+        textAlign: 'left',
+        backgroundColor:'white',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: 'black'
+    },
+    comentar:{
+        height: 20, 
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderStyle: 'solid',
+        borderRadius: 6,
+  
+    },
+    cadaComment:{
+        marginTop: 20,
+        marginBottom: 20,
+    },
+    title:{
+        fontSize: 22,
+        textAlign: 'left',
+        color: 'black',
+        fontWeight: '600'
+    },
+    likeSection: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'left',
+        alignItems: 'center',
+        
+      
+    },
+    heartIcon: {
+        padding: 10,
+    },
+    infoPost:{
+        padding: 10,
+
+    }
+
 })
 
 

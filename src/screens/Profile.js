@@ -25,7 +25,19 @@ class Profile extends Component{
 const styles = StyleSheet.create({
     container: {
         marginTop: 20,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        width: 400,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        borderWidth:1,
+        borderColor: '#ccc',
+        borderStyle: 'solid',
+        borderRadius: 6,
+        paddingVertical:15,
+        paddingHorizontal: 10,
+        height: 'auto'
+
+        
     },
     welcome: {
         fontSize:18,
