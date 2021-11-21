@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList,} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Modal, TextInput, FlatList, Image,} from 'react-native';
 import { db, auth } from '../firebase/config';
 import firebase from 'firebase';
 import { Icon } from 'react-native-elements';
@@ -76,18 +76,32 @@ class Post extends Component{
 
     }
 
+    removePost() {
+      db.collection('posts').doc(this.props.postData.id).delete()
+      .then(()=>{
+          console.log('borrado')
+      })   
+      }
+
 
     render(){
         return(
             <View style={styles.contanier}>
+             <Image style={styles.imagen} source={{uri: this.props.postData.data.foto}}/>
+
              <Text style={styles.infoPost}>Texto del post: {this.props.postData.data.texto}</Text>
              <Text style={styles.infoPost}>User: {this.props.postData.data.owner} </Text>  
              <Text style={styles.infoPost}> Likes:{this.state.likes} </Text>
              <Text style={styles.infoPost}> Comentarios: {this.state.cantComments} </Text>
              
-                <TouchableOpacity onPress={()=> this.props.borrar(id)}> 
-                    <Text style={styles.infoPost}> Borrar Posteo</Text>
-                </TouchableOpacity> 
+            {this.props.postData.data.owner == auth.currentUser.email ? (
+                 <TouchableOpacity onPress={()=> this.removePost()}> 
+                 <Text style={styles.infoPost}> Borrar Posteo</Text>
+             </TouchableOpacity> 
+            ):(
+                <Text></Text>
+            )} 
+           
 
             {
                 this.state.myLike == false ?
@@ -245,6 +259,9 @@ class Post extends Component{
     infoPost:{
         padding: 10,
 
+    },
+    imagen:{
+        height: 200,
     }
 
 })
