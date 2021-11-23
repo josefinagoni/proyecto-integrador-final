@@ -7,15 +7,14 @@ class Search extends Component {
     constructor(props){
         super(props);6
         this.state = {
-            posts: [],
+            posts: null,
             search: '',
         };
     }
-    componentDidUpdate(){
-        this.getPosts();
-    }
+    
     getPosts(){
-        db.collection('posts').where('title','==',this.state.search).onSnapshot(
+        console.log('hola');
+        db.collection('posts').where('owner','==',this.state.search).onSnapshot(
             docs => {
                 let posts = [];
                 docs.forEach(doc => {
@@ -23,14 +22,44 @@ class Search extends Component {
                         id:doc.id,
                         data: doc.data()
                     })
-                    this.setState({
-                        posts: posts,
-                    })
+                })
+                console.log(posts)
+                this.setState({
+                    posts: posts,
                 })
             }
         )
     }
+    render(){
+        return(
+            <View style={styles.formContainer}>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={(text)=>this.setState({search: text})}
+                    placeholder= 'buscar'
+                    keyboardType= 'default' />
+                 <TouchableOpacity  style={styles.button} onPress={()=>this.getPosts()}
+                    disabled={this.state.search =='' ? true:false}>
+                        <Text style={styles.textButton}>Ingresar</Text>
+                </TouchableOpacity>
+                {this.state.posts ? 
+                this.state.posts.length > 0 ? 
+                <FlatList 
+                    data= { this.state.posts }
+                    keyExtractor = { post => post.id}
+                    renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+                />
+                :
+                <Text >NO hay resultados para su busqueda</Text>
+                :
+                null
+                }
+
+            </View>
+        
+    )}
 }
+
 const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
