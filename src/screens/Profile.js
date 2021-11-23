@@ -39,6 +39,7 @@ class Profile extends Component{
                 <Text style={styles.welcome}> Bienvenido: {this.props.userData.email}</Text>
                 <Text style={styles.element}> Usuario creado el: {this.props.userData.metadata.creationTime}</Text>
                 <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
+                <Text style={styles.element}> Cantidad Posts: {this.state.posteos.length}</Text>
                 <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
                     <Text style={styles.touchableText}>Logout</Text>
                 </TouchableOpacity>
