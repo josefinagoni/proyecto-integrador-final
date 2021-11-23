@@ -42,7 +42,7 @@ class MyCamera extends Component{
     savePhoto(){
         //Tiene que buscar la foto de la uri temporal y subirla al storage.
         fetch(this.state.photo)
-            .then( res => res.blob())
+            .then( res => res.blob()) //Traducis la foto
             .then( image =>{
                 //Vamos a guardar la foto en storage y obtener la url pública.
                 //Crear el nombre del archivo de la foto.    
@@ -65,6 +65,10 @@ class MyCamera extends Component{
     }
 
     clear(){
+        this.setState({
+           photo:'',
+           showCamera: true 
+        })
         //cambiar el estado de photo a ''
         //cambiar showCamera a true.
     }
