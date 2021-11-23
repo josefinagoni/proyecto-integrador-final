@@ -8,6 +8,7 @@ import Login from '../screens/Login';
 import Profile from '../screens/Profile'
 import PostForm from '../screens/postForm';
 import { auth } from '../firebase/config';
+import Search from '../screens/Search';
 
 
 const Drawer = createDrawerNavigator();

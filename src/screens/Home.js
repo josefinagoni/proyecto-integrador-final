@@ -33,9 +33,7 @@ class Home extends Component{
       )
     }
 
-    onRemove(id){ 
-      id => posteos.filter(post => post.id !== id)
-     }
+    
   
     render(){
       return(
@@ -43,7 +41,7 @@ class Home extends Component{
           <FlatList 
             data= { this.state.posteos }
             keyExtractor = { post => post.id}
-            renderItem = { ({item}) => <Post postData={item} borrar={id => this.onRemove(id)}/>} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+            renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
           />
         </View>
         )

@@ -10,7 +10,8 @@ class PostForm extends Component{
         this.state={
             textoPost: '',
             postSubido: false,
-            showCamera: true
+            showCamera: true,
+            url:''
             
         }
     };
@@ -19,11 +20,17 @@ class PostForm extends Component{
         db.collection("posts").add({
             owner:auth.currentUser.email,
             createdAt: Date.now(),
-            textoPost: this.state.textoPost
+            texto: this.state.textoPost,
+            foto: this.state.url
+           
         })
         .then(() => {
-            this.props.drawerProps.navigation.navigate("Home"),
-            console.log("Documento subido!");
+            this.setState({
+                textoPost:'',
+                showCamera: true,
+                url:''
+            })
+            this.props.drawerProps.navigation.navigate("Home");
         })
         .catch((error) => {
             console.error("Error escribiendo el documento: ", error);
@@ -80,6 +87,7 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
+        flex: 1
     },
     input:{
         height:100,
