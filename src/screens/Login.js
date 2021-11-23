@@ -32,7 +32,8 @@ class Login extends Component{
                 {this.props.logueado ? 
                  <Text style={styles.button}> Gracias! Usted ya ha sido logueado </Text> :
             
-                 <TouchableOpacity  style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
+                 <TouchableOpacity  style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}
+                 disabled={this.state.email =='' || this.state.password =='' ? true:false}>
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
                 }

@@ -140,13 +140,18 @@ class Post extends Component{
                     <Text style={styles.title}>Comentarios</Text>
                     
                     {/* Lista de comentarios */}
+                    {this.props.postData.data.comment && this.props.postData.data.comment.length > 0 ?
                     <FlatList 
-                        data= {this.props.postData.data.comment}
-                        keyExtractor = { oneComment => oneComment.id}
-                        renderItem = { ({item}) => <Text> @{item.author}: {item.comment}</Text> } 
-                        style={styles.cadaComment}
-                        // //Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
-                    />
+                    data= {this.props.postData.data.comment}
+                    keyExtractor = { oneComment => oneComment.id}
+                    renderItem = { ({item}) => <Text> @{item.author}: {item.comment}</Text> } 
+                    style={styles.cadaComment}
+                    // //Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+                />
+                :
+                <Text> Todavia no hay comentarios. Se el primero en comentar </Text> 
+                }
+                    
 
 
                     {/* Formulario para nuevo comentarios */}
@@ -158,7 +163,8 @@ class Post extends Component{
                             value={this.state.comment}
                             style={styles.comentar}
                         />
-                        <TouchableOpacity style={styles.button} onPress={()=>{this.guardarComentario()}}>
+                        <TouchableOpacity style={styles.button} onPress={()=>{this.guardarComentario()}}
+                        disabled={this.state.comment =='' ? true:false}>
                             <Text style={styles.textButton}>Comentar</Text>
                         </TouchableOpacity>
                     </View>
