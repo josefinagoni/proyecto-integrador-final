@@ -75,7 +75,6 @@ class Menu extends Component{
                });
             })
     }
-    search()
 
     render(){
         return(
