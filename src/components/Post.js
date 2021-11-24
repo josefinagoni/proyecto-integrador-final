@@ -206,7 +206,8 @@ class Post extends Component{
         borderWidth: 1,
         padding: 10,
         width: '100%',
-        height: 'auto'
+        height: 'auto',
+        marginTop: 10,
     },
     button:{
         backgroundColor:'#7b68ee',

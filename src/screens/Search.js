@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
 import { auth, db} from '../firebase/config';
 import Post from '../components/Post';
+import { Icon } from 'react-native-elements';
 
 class Search extends Component {
     constructor(props){
@@ -36,11 +37,12 @@ class Search extends Component {
                 <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({search: text})}
-                    placeholder= 'buscar'
+                    placeholder= 'Busqueda de emails de usuarios...'
                     keyboardType= 'default' />
                  <TouchableOpacity  style={styles.button} onPress={()=>this.getPosts()}
                     disabled={this.state.search =='' ? true:false}>
-                        <Text style={styles.textButton}>Ingresar</Text>
+                        <Icon style={styles.icon} name="search" type="ionicon" size={20} color="black"/>
+                        <Text style={styles.textButton}>Buscar</Text>
                 </TouchableOpacity>
                 {this.state.posts ? 
                 this.state.posts.length > 0 ? 
@@ -50,7 +52,7 @@ class Search extends Component {
                     renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
                 />
                 :
-                <Text >NO hay resultados para su busqueda</Text>
+                <Text style={styles.textError} >No hay resultados para su busqueda</Text>
                 :
                 null
                 }
@@ -64,9 +66,11 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
+        alignItems: 'center',
+        width: 'auto'
     },
     input:{
-        height:100,
+        height:50,
         paddingVertical:15,
         paddingHorizontal: 10,
         borderWidth:1,
@@ -74,20 +78,43 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+        width: '100%'
     },
     button:{
         backgroundColor:'#28a745',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        padding: 5,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#28a745',
+        flex: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        width: '30%',
+        justifyContent: 'space-around',
+        marginBottom: 5,
     },
     textButton:{
-        color: '#fff'
-    }
+        color: 'black',
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'auto',
+       
+      
+    },
+    icon: {
+        padding: 5,
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'auto',
+    },
+    textError:{
+        color: 'red'
+    },
 
 })
 
