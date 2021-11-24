@@ -68,8 +68,8 @@ class PostForm extends Component{
                 { this.state.postSubido ? 
                 <Text style={styles.textButton}> Gracias su posteo ha sido creado </Text> : 
                 
-                <TouchableOpacity style={styles.button} style={styles.sectionIcon} onPress={()=>this.submitPost()}>
-                    <Icon style={styles.icon} name="duplicate" type="ionicon" size={20} color="red"/>
+                <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
+                    <Icon style={styles.icon} name="duplicate" type="ionicon" size={20} color="black"/>
                     <Text style={styles.textButton}> Subir Post</Text>
                 </TouchableOpacity>
 
@@ -87,9 +87,12 @@ class PostForm extends Component{
 
 const styles = StyleSheet.create({
     formContainer:{
-        paddingHorizontal:10,
+        padding: 10,
         marginTop: 20,
-        flex: 1
+        width: '100%',
+        height: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     input:{
         height:100,
@@ -100,30 +103,39 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+        width: '100%'
+    },
+    icon: {
+        padding: 5,
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'auto',
     },
     button:{
         backgroundColor:'#28a745',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        padding: 5,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#28a745',
+        flex: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        width: '40%',
+        justifyContent: 'space-around',
+        marginBottom: 5,
+        marginTop: 10,
     },
     textButton:{
-        color: '#fff'
-    },
-    sectionIcon: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'left',
-        alignItems: 'center',
-        
-      
-    },
-    icon: {
-        padding: 10,
+            color: 'black',
+            flex: 2,
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: 'auto',
+
     },
 
 })

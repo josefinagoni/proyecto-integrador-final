@@ -8,11 +8,11 @@ class MyCamera extends Component{
     constructor(props){
         super(props);
         this.state = {
-            permission: false, //Permisos de la cámara en el dispositivo
-            photo: '', //Guardar la url/ uri de la foto.
+            permission: false, 
+            photo: '', 
             showCamera: true,
         }
-        this.camera //la referencia a esta cámara.
+        this.camera 
     }
 
     componentDidMount(){
@@ -23,16 +23,14 @@ class MyCamera extends Component{
                 })
             })
             .catch( error => console.log(error))
-        //Investigar
-       // console.log(Camera);
-       // console.log(this.camera);
+        
     }
 
     takePicture(){
         this.camera.takePictureAsync()
             .then((photo)=>{
                 this.setState({
-                    photo: photo.uri, //La ruta interna temporal a la foto.
+                    photo: photo.uri, 
                     showCamera:false
                 })
 
@@ -41,12 +39,10 @@ class MyCamera extends Component{
     }
 
     savePhoto(){
-        //Tiene que buscar la foto de la uri temporal y subirla al storage.
+        
         fetch(this.state.photo)
-            .then( res => res.blob()) //Traducis la foto
+            .then( res => res.blob()) 
             .then( image =>{
-                //Vamos a guardar la foto en storage y obtener la url pública.
-                //Crear el nombre del archivo de la foto.    
                 const ref = storage.ref(`photos/${Date.now()}.jpg`)
                 ref.put(image)
                     .then(()=>{
@@ -83,10 +79,12 @@ class MyCamera extends Component{
                     this.state.showCamera === false ?
                     //Render del preview
                     <React.Fragment>
+                        <View>
                         <Image 
                             style={styles.cameraBody}
                             source={{uri:this.state.photo}}
                         /> 
+                        </View>
                         <View style={styles.row}>
                             <View style={styles.eachRow} >
                             <TouchableOpacity style={styles.sectionIcon} onPress={()=>this.savePhoto()}>
@@ -105,15 +103,17 @@ class MyCamera extends Component{
                     </React.Fragment>
                     :
                     //render de la cámara
-                    <View style={styles.container}>
+                    <View >
+                        <View style={styles.camera}>
                         <Camera
                             style={styles.cameraBody}
                             type={Camera.Constants.Type.back}
                             ref={ reference => this.camera = reference }
                         />
-                        <TouchableOpacity style={styles.button} style={styles.sectionIcon} onPress={()=>this.takePicture()}>
+                        </View>
+                        <TouchableOpacity style={styles.sectionIcon} onPress={()=>this.takePicture()}>
                         <Icon style={styles.icon} name="camera" type="ionicon" size={20} color="#000"/>
-                            <Text>Sacar Foto</Text>
+                            <Text style={styles.sacar}>Sacar Foto</Text>
                         </TouchableOpacity>
                     </View> 
                 :
@@ -131,21 +131,42 @@ class MyCamera extends Component{
 
 const styles=StyleSheet.create({
     container:{
-        flex:1,
-        width: '70%',
-        height: 500,
-        alignItems: 'center'
+        marginBottom: 10,
+        borderRadius:4,
+        borderColor: "#ccc",
+        borderWidth: 1,
+        padding: 10,
+        width: '100%',
+        height: '100%',
+        marginTop: 10,
     },
     cameraBody:{
-        flex:1,
-        height: '90%',
+        
+        height:500
+        
+    },
+    camera:{
+        height:500
+    },
+    sacar:{
+        flex: 2,
+        flexDirection: 'column'
     },
     
     sectionIcon: {
-        flex: 1,
+        backgroundColor:'light-blue',
+        padding: 5,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: 'light-blue',
+        flex: 2,
         flexDirection: 'row',
-        justifyContent: 'left',
         alignItems: 'center',
+        justifyContent: 'space-around',
+        marginBottom: 5,
+        marginTop: 5,
         
       
     },
@@ -155,8 +176,7 @@ const styles=StyleSheet.create({
     row:{
         flex: 1,
         flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         width: '90%',
         justifyContent: 'space-around',
 

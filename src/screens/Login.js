@@ -63,13 +63,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         marginLeft: 4, 
     },
-    icon: {
-        padding: 5,
-        flex: 2,
-        flexDirection: 'row',
-        alignItems: 'center',
-        width: 'auto',
-    },
+    
     title:{
     fontSize: 22,
     textAlign: 'left',
@@ -86,6 +80,13 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+    },
+    icon: {
+        padding: 5,
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'auto',
     },
     button:{
         backgroundColor:'#28a745',
