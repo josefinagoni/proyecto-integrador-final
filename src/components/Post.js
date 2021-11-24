@@ -87,40 +87,58 @@ class Post extends Component{
     render(){
         return(
             <View style={styles.contanier}>
-             <Image style={styles.imagen} source={{uri: this.props.postData.data.foto}}/>
 
-             <Text style={styles.infoPost}>Texto del post: {this.props.postData.data.texto}</Text>
-             <Text style={styles.infoPost}>User: {this.props.postData.data.owner} </Text>  
-             <Text style={styles.infoPost}> Likes:{this.state.likes} </Text>
-             <Text style={styles.infoPost}> Comentarios: {this.state.cantComments} </Text>
-             
-            {this.props.postData.data.owner == auth.currentUser.email ? (
-                 <TouchableOpacity onPress={()=> this.removePost()}> 
-                 <Text style={styles.infoPost}> Borrar Posteo</Text>
+                <View style={styles.primerColumna}>
+                <Icon style={styles.userIcon} name="person-circle" type="ionicon" size={20} color="#000"/>
+            <Text style={styles.infoUser}>{this.props.postData.data.owner} </Text> 
+                
+                {this.props.postData.data.owner == auth.currentUser.email ? (
+                 <TouchableOpacity style={styles.borrarSection} onPress={()=> this.removePost()}> 
+                 <Icon style={styles.heartIcon} name="trash" type="ionicon" size={20} color="#000"/>
+
              </TouchableOpacity> 
             ):(
                 <Text></Text>
             )} 
-           
+            </View>
 
-            {
+             <Image style={styles.imagen} source={{uri: this.props.postData.data.foto}}/>
+
+                <View style={styles.rows}>
+                <Text style={styles.infolike}> {this.state.likes} </Text>
+                {
                 this.state.myLike == false ?
             
-            <TouchableOpacity style={styles.likeSection}  onPress={()=>this.darLike()}>
+            <TouchableOpacity  style={styles.likeSection}   onPress={()=>this.darLike()}>
                  <Icon style={styles.heartIcon} name="heart-outline" type="ionicon" size={20} color="#000"/>
                  <Text > Me gusta</Text>
             </TouchableOpacity>  :
             
-            <TouchableOpacity  style={styles.likeSection} onPress={()=>this.borrarLike()}>
+            <TouchableOpacity style={styles.likeSection}  onPress={()=>this.borrarLike()}>
                <Icon style={styles.heartIcon} name="heart" type="ionicon" size={20} color="red"/>
                <Text >Quitar like</Text>
            </TouchableOpacity>
              
             }
-
-            <TouchableOpacity onPress={()=>this.showModal()}>
-                <Text style={styles.infoPost} >Ver Comentarios</Text>
+            <Text style={styles.commentInfo}>{this.state.cantComments} </Text>
+         
+            <TouchableOpacity style={styles.commentSection} onPress={()=>this.showModal()}>
+                <Icon style={styles.commentIcon} name="chatbubble-ellipses" type="ionicon" size={20} color="#000"/>
             </TouchableOpacity>
+                </View>
+
+                <View style={styles.columna}>
+                    <Icon style={styles.textIcon} name="document-text" type="ionicon" size={20} color="#000"/>
+                    <Text style={styles.textoPost}>{this.props.postData.data.texto}</Text>
+                </View>
+
+                <TouchableOpacity  style={styles.columna} onPress={()=>this.showModal()}>
+                    <Icon style={styles.commentIcon2} name="chatbubble-ellipses" type="ionicon" size={20} color="#000"/>
+                    <Text style={styles.infoComment} >Ver Comentarios</Text>
+                </TouchableOpacity>
+            
+               
+             
 
             {/* Modal para comentarios */}
             {   this.state.showModal ?
@@ -182,11 +200,13 @@ class Post extends Component{
 
   const styles = StyleSheet.create({
     contanier:{
-        marginBottom: 20,
+        marginBottom: 10,
         borderRadius:4,
         borderColor: "#ccc",
         borderWidth: 1,
         padding: 10,
+        width: '100%',
+        height: 'auto'
     },
     button:{
         backgroundColor:'#7b68ee',
@@ -252,22 +272,134 @@ class Post extends Component{
         fontWeight: '600'
     },
     likeSection: {
-        flex: 1,
+        flex: 4,
         flexDirection: 'row',
         justifyContent: 'left',
         alignItems: 'center',
         
       
     },
+    commentSection: {
+        flex: 4,
+        flexDirection: 'row',
+        justifyContent: 'left',
+        alignItems: 'center',
+        
+      
+    },
+    borrarSection: {
+        flex: 5,
+        flexDirection: 'row',
+        alignItems: 'left',
+        marginBottom: 20,
+        
+      
+    },
     heartIcon: {
         padding: 10,
+    },
+    userIcon: {
+        padding: 10,
+        width: '10%', 
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        flex: 3,
+    },
+    textIcon: {
+        paddingRight: 10,
+        width: '10%', 
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        flex: 2,
+    },
+    primerColumna:{
+        flex: 3,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        width: '90%',
+        justifyContent: 'space-around',
+        marginBottom: 5
+
+    },
+    columna:{
+        flex: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        width: '90%',
+        justifyContent: 'space-around',
+        marginBottom: 5
+
     },
     infoPost:{
         padding: 10,
 
     },
+    infoUser:{
+        flex: 3,
+        padding: 10,
+        width: '90%', 
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+
+    },
+    textoPost:{
+        flex: 2,
+        width: '90%', 
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+
+    },
+    infoComment:{
+        flex: 2,
+        width: '90%', 
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+
+    },
+    infoLike:{
+        flex: 3,
+        marginLeft: 10,
+        flexDirection: 'column',
+        alignItems: 'right',
+        
+
+
+    },
+    commentIcon:{
+        flex: 4,
+        flexDirection: 'row',
+        justifyContent: 'left',
+        alignItems: 'center',
+
+
+    },
+   commentIcon2: {
+    paddingRight: 10,
+    width: '10%', 
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    flex: 2,
+    },
+    
     imagen:{
         height: 200,
+        marginTop: 20,
+        marginBottom: 15,
+
+    },
+    rows:{
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center'
+        
+
+    },
+    eachRow:{
+        width: '50%', 
+        flexDirection: 'row',
+
     }
 
 })

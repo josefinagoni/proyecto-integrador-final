@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image, TextInput, TouchableOpacityBase} from 'react-native';
 import {Camera} from 'expo-camera';
 import {db, storage} from '../firebase/config';
+import { Icon } from 'react-native-elements';
 
 class MyCamera extends Component{
     constructor(props){
@@ -86,13 +87,20 @@ class MyCamera extends Component{
                             style={styles.cameraBody}
                             source={{uri:this.state.photo}}
                         /> 
-                        <View>
-                            <TouchableOpacity onPress={()=>this.savePhoto()}>
+                        <View style={styles.row}>
+                            <View style={styles.eachRow} >
+                            <TouchableOpacity style={styles.sectionIcon} onPress={()=>this.savePhoto()}>
+                            <Icon style={styles.icon} name="cloud-done" type="ionicon" size={20} color="green"/>
                                 <Text>Aceptar</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={()=>this.clear()}>
+                            </View>
+
+                            <View style={styles.eachRow} >
+                            <TouchableOpacity style={styles.sectionIcon} onPress={()=>this.clear()}>
+                            <Icon style={styles.icon} name="close-circle" type="ionicon" size={20} color="red"/>
                                 <Text>Rechazar</Text> 
                             </TouchableOpacity>
+                            </View>
                         </View>
                     </React.Fragment>
                     :
@@ -103,13 +111,14 @@ class MyCamera extends Component{
                             type={Camera.Constants.Type.back}
                             ref={ reference => this.camera = reference }
                         />
-                        <TouchableOpacity style={styles.button} onPress={()=>this.takePicture()}>
+                        <TouchableOpacity style={styles.button} style={styles.sectionIcon} onPress={()=>this.takePicture()}>
+                        <Icon style={styles.icon} name="camera" type="ionicon" size={20} color="#000"/>
                             <Text>Sacar Foto</Text>
                         </TouchableOpacity>
                     </View> 
                 :
                 //render mensaje
-                <Text>No tienes permisos para usar la cámara</Text>
+                <Text >No tienes permisos para usar la cámara</Text>
 
             }
             </View>
@@ -123,14 +132,44 @@ class MyCamera extends Component{
 const styles=StyleSheet.create({
     container:{
         flex:1,
+        width: '70%',
+        height: 500,
+        alignItems: 'center'
     },
     cameraBody:{
-        flex:7,
-    },
-    button:{
         flex:1,
-        justifyContent: 'center',
-    }
+        height: '90%',
+    },
+    
+    sectionIcon: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'left',
+        alignItems: 'center',
+        
+      
+    },
+    icon: {
+        padding: 10,
+    },
+    row:{
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        width: '90%',
+        justifyContent: 'space-around',
+
+            
+    
+        },
+        eachRow:{
+            width: '50%', 
+            flexDirection: 'column',
+            alignItems: 'center'
+            
+    
+        },
 })
 
 export default MyCamera;
