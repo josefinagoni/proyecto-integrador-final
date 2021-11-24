@@ -35,7 +35,21 @@ class Menu extends Component{
             }
         })
     }
-
+    
+    register(email, pass){
+        auth.createUserWithEmailAndPassword(email, pass)
+            .then( (response) => {
+                this.setState({
+                    registrado: true
+                })
+            }
+            )
+            .catch( message => {
+               this.setState({
+                   error: message
+               });
+            })
+    }
     login(email,pass){
         auth.signInWithEmailAndPassword(email,pass)
             .then( response => {
@@ -62,20 +76,7 @@ class Menu extends Component{
             .catch(e => console.log(e))
     }
 
-    register(email, pass){
-        auth.createUserWithEmailAndPassword(email, pass)
-            .then( (response) => {
-                this.setState({
-                    registrado: true
-                })
-            }
-            )
-            .catch( message => {
-               this.setState({
-                   error: message
-               });
-            })
-    }
+   
 
     render(){
         return(
