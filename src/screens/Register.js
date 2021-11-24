@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
+import { Icon } from 'react-native-elements';
 
 class Register extends Component{
     constructor(props){
@@ -37,6 +38,7 @@ class Register extends Component{
             
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}
                 disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? true:false} >
+                    <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
                     <Text style={styles.textButton}>Registrarse</Text>      
                 </TouchableOpacity>
             }
@@ -52,9 +54,9 @@ class Register extends Component{
 
 const styles = StyleSheet.create({
     formContainer:{
-        paddingHorizontal: 10,
+        padding: 10,
         marginTop: 20,
-        width: '50%',
+        width: '98%',
         height: 'auto',
         justifyContent: 'center',
         alignItems: 'center',
@@ -62,9 +64,14 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginLeft: 300,
-        
-        
+        marginLeft: 4, 
+    },
+    icon: {
+        padding: 5,
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'auto',
     },
     title:{
     fontSize: 22,
@@ -85,17 +92,28 @@ const styles = StyleSheet.create({
     },
     button:{
         backgroundColor:'#28a745',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        padding: 5,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
         borderColor: '#28a745',
-        marginTop: 40,
+        flex: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        width: '40%',
+        justifyContent: 'space-around',
+        marginBottom: 5,
+        marginTop: 10,
     },
     textButton:{
-        color: '#fff'
+            color: 'black',
+            flex: 2,
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: 'auto',
+
     },
     textError:{
         color: 'red'

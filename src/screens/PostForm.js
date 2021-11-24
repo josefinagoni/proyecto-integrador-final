@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import { auth, db } from '../firebase/config';
 import MyCamera from "../components/myCamera";
+import { Icon } from 'react-native-elements';
 
 class PostForm extends Component{
     constructor(props){
@@ -67,7 +68,8 @@ class PostForm extends Component{
                 { this.state.postSubido ? 
                 <Text style={styles.textButton}> Gracias su posteo ha sido creado </Text> : 
                 
-                <TouchableOpacity style={styles.button} onPress={()=>this.submitPost()}>
+                <TouchableOpacity style={styles.button} style={styles.sectionIcon} onPress={()=>this.submitPost()}>
+                    <Icon style={styles.icon} name="duplicate" type="ionicon" size={20} color="red"/>
                     <Text style={styles.textButton}> Subir Post</Text>
                 </TouchableOpacity>
 
@@ -111,7 +113,18 @@ const styles = StyleSheet.create({
     },
     textButton:{
         color: '#fff'
-    }
+    },
+    sectionIcon: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'left',
+        alignItems: 'center',
+        
+      
+    },
+    icon: {
+        padding: 10,
+    },
 
 })
 

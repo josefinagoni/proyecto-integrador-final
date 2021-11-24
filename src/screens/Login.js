@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
+import { Icon } from 'react-native-elements';
 
 class Login extends Component{
     constructor(props){
@@ -15,6 +16,7 @@ class Login extends Component{
     render(){
         return(
             <View style={styles.formContainer}>
+
                 <Text style={styles.title}> Login</Text> 
                 <TextInput
                     style={styles.input}
@@ -34,6 +36,7 @@ class Login extends Component{
             
                  <TouchableOpacity  style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}
                  disabled={this.state.email =='' || this.state.password =='' ? true:false}>
+                     <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
                 }
@@ -48,11 +51,9 @@ class Login extends Component{
 
 const styles = StyleSheet.create({
     formContainer:{
-        paddingHorizontal: 10,
+        padding: 10,
         marginTop: 20,
-        paddingHorizontal: 10,
-        marginTop: 20,
-        width: '50%',
+        width: '98%',
         height: 'auto',
         justifyContent: 'center',
         alignItems: 'center',
@@ -60,43 +61,60 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginLeft: 300,
+        marginLeft: 4, 
+    },
+    icon: {
+        padding: 5,
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 'auto',
     },
     title:{
-        fontSize: 22,
-        textAlign: 'left',
-        color: 'black',
-        fontWeight: '600'
-    },
-    input: {
-        height: 20, 
-        paddingVertical: 15, 
-        paddingHorizontal: 10, 
-        borderWidth: 1,
+    fontSize: 22,
+    textAlign: 'left',
+    color: 'black',
+    fontWeight: '600'
+    }, 
+    input:{
+        height:20,
+        paddingVertical:15,
+        paddingHorizontal: 10,
+        width: '100%',
+        borderWidth:1,
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginVertical: 10,
-        width: '100%',
+        marginVertical:10,
     },
     button:{
         backgroundColor:'#28a745',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
+        padding: 5,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
         borderColor: '#28a745',
-        marginTop: 40,
+        flex: 2,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        width: '35%',
+        justifyContent: 'space-around',
+        marginBottom: 5,
+        marginTop: 10,
     },
     textButton:{
-        color: '#ccc'
+            color: 'black',
+            flex: 2,
+            flexDirection: 'row',
+            alignItems: 'center',
+            width: 'auto',
+
     },
     textError:{
         color: 'red'
-    },
-    
+    }
 
 
 })

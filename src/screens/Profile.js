@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, ActivityIndicator, FlatList, TextInput} from 'react-native';
 import {db} from '../firebase/config';
 import Post from '../components/Post';
+import { Icon } from 'react-native-elements';
+
 
 class Profile extends Component{
     constructor(props){
@@ -40,13 +42,18 @@ class Profile extends Component{
                 <Text style={styles.element}> Usuario creado el: {this.props.userData.metadata.creationTime}</Text>
                 <Text style={styles.element}> Último login: {this.props.userData.metadata.lastSignInTime}</Text>
                 <Text style={styles.element}> Cantidad Posts: {this.state.posteos.length}</Text>
-                <TouchableOpacity style={styles.touchable} onPress={()=>this.props.logout()}>
+                
+
+                <TouchableOpacity style={styles.sectionIcon}onPress={()=>this.props.logout()}>
+                <Icon style={styles.icon} name="log-out" type="ionicon" size={20} color="#000"/>
                     <Text style={styles.touchableText}>Logout</Text>
                 </TouchableOpacity>
+
                 <FlatList 
             data= { this.state.posteos }
             keyExtractor = { post => post.id}
-            renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+            renderItem = { ({item}) => <Post postData={item} 
+            style={styles.list}/>} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
           />         
             </View>
         )
@@ -57,13 +64,8 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 20,
         marginHorizontal: 10,
-        width: 400,
+        width: 'auto',
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        borderWidth:1,
-        borderColor: '#ccc',
-        borderStyle: 'solid',
-        borderRadius: 6,
         paddingVertical:15,
         paddingHorizontal: 10,
         height: 'auto'
@@ -79,6 +81,10 @@ const styles = StyleSheet.create({
     element:{
         marginBottom:10,
     },
+    list:{
+        width: '100%'
+    },
+    
     touchable:{
         padding: 10,
         backgroundColor: '#dc3545',
@@ -87,9 +93,44 @@ const styles = StyleSheet.create({
     },
     touchableText:{
         fontWeight: 'bold',
-        color:'#fff',
+        color:'black',
         textAlign: 'center'
-    }
+    },
+    sectionIcon: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'left',
+        alignItems: 'center',
+        padding: 10,
+        backgroundColor: '#dc3545',
+        marginTop: 30,
+        borderRadius: 4,
+        marginBottom:20,
+        
+      
+    },
+    icon: {
+        padding: 10,
+    },
+
+    row:{
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        width: '90%',
+        justifyContent: 'space-around',
+
+            
+    
+        },
+        eachRow:{
+            width: '50%', 
+            flexDirection: 'column',
+            alignItems: 'center'
+            
+    
+        },
 });
 
 export default Profile;
