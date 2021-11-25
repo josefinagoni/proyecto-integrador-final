@@ -17,6 +17,8 @@ class PostForm extends Component{
         }
     };
 
+    
+
     submitPost(){
         db.collection("posts").add({
             owner:auth.currentUser.email,

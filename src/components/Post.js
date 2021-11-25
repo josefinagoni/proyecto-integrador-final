@@ -15,8 +15,23 @@ class Post extends Component{
             comentarios: [],
             cantComments: 0,
             
-            
         }
+    }
+
+    componentDidMount(){
+        if(this.props.postData.data.likes){
+            this.setState({
+            likes:this.props.postData.data.likes.length,
+            myLike: this.props.postData.data.likes.includes(auth.currentUser.email),  
+        })
+        }
+
+        if(this.props.postData.data.cantComments){
+            this.setState({
+            cantComments:this.props.postData.data.cantComments.length,  
+        })
+        }
+        
     }
 
     darLike(){
@@ -25,7 +40,7 @@ class Post extends Component{
         })
         .then( ()=> {
             this.setState({
-                likes: this.props.postData.data.likes.length + 1,
+                likes: this.props.postData.data.likes.length,
                 myLike: true,
             })
         })
@@ -67,7 +82,7 @@ class Post extends Component{
         .then( res =>{
             this.setState({
                 comment:'',
-                cantComments: this.state.cantComments + 1
+                cantComments: this.props.postData.data.cantComments.length + 1
             })
         })
         .catch(e => console.log(e))
