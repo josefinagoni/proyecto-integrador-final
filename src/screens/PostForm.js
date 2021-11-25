@@ -22,7 +22,7 @@ class PostForm extends Component{
             owner:auth.currentUser.email,
             createdAt: Date.now(),
             texto: this.state.textoPost,
-            foto: this.state.url
+            foto: this.state.url,
            
         })
         .then(() => {
