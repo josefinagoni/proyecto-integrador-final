@@ -236,7 +236,7 @@ class Post extends Component{
        flexDirection: 'column',
        justifyContent: 'center',
        alignItems: 'center',
-        backgroundColor: '#48d1cc',
+        backgroundColor: 'pink',
         width: '100%',
         height: 100,
        
