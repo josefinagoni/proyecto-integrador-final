@@ -250,7 +250,7 @@ class Post extends Component{
         borderColor: '#28a745'
     },
     textButton:{
-        color: '#ccc'
+        color: 'white',
     },
     modal:{
        flex: 2,

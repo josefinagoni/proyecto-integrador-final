@@ -67,10 +67,10 @@ class Search extends Component {
 
 const styles = StyleSheet.create({
     formContainer:{
+        width: '100%',
         paddingHorizontal:10,
         backgroundColor: 'pink',
         alignItems: 'center',
-        width: '100%'
     },
     input:{
         height:75,
