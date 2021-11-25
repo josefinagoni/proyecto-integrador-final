@@ -51,10 +51,8 @@ class Login extends Component{
 
 const styles = StyleSheet.create({
     formContainer:{
-        padding: 10,
-        marginTop: 20,
+        marginTop: 5,
         width: '98%',
-        height: 'auto',
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth:1,

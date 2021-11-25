@@ -48,6 +48,7 @@ class Profile extends Component{
                 <Icon style={styles.icon} name="log-out" type="ionicon" size={20} color="#000"/>
                     <Text style={styles.touchableText}>Logout</Text>
                 </TouchableOpacity>
+                 
 
                 <FlatList 
             data= { this.state.posteos }
@@ -61,13 +62,13 @@ class Profile extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20,
-        marginHorizontal: 10,
+        
         width: 'auto',
         alignItems: 'center',
         paddingVertical:15,
         paddingHorizontal: 10,
-        height: 'auto'
+        height: 'auto',
+        backgroundColor: 'pink'
 
         
     },

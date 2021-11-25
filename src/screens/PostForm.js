@@ -88,11 +88,12 @@ class PostForm extends Component{
 const styles = StyleSheet.create({
     formContainer:{
         padding: 10,
-        marginTop: 20,
         width: '100%',
-        height: 'auto',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor:'pink'
+        
     },
     input:{
         height:100,

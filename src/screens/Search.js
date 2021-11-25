@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         marginTop: 20,
         alignItems: 'center',
-        width: 'auto'
+        width: '100%',
     },
     input:{
-        height:50,
+        height:75,
         paddingVertical:15,
         paddingHorizontal: 10,
         borderWidth:1,
-        borderColor: '#ccc',
+        borderColor: 'black',
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: 'auto',
+        fontWeight: '400'
        
       
     },

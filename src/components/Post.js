@@ -19,7 +19,6 @@ class Post extends Component{
         }
     }
 
-
     darLike(){
         db.collection('posts').doc(this.props.postData.id).update({
             likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
@@ -56,7 +55,6 @@ class Post extends Component{
     }
 
     guardarComentario(){
-        console.log('Guardadno comentario...');
         let oneComment = {
             createdAt: Date.now(),
             author: auth.currentUser.email,
@@ -145,8 +143,7 @@ class Post extends Component{
                 <Modal
                     visible={this.state.showModal}
                     animationType='slide'
-                    transparent={false}
-                    
+                    transparent={false}    
                 >   
 
                 <View style={styles.modal}>
@@ -164,10 +161,10 @@ class Post extends Component{
                     keyExtractor = { oneComment => oneComment.id}
                     renderItem = { ({item}) => <Text> @{item.author}: {item.comment}</Text> } 
                     style={styles.cadaComment}
-                    // //Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+                    
                 />
                 :
-                <Text> Todavia no hay comentarios. Se el primero en comentar </Text> 
+                <Text style={styles.texto}> Todavia no hay comentarios. Se el primero en comentar </Text> 
                 }
                     
 
@@ -208,6 +205,7 @@ class Post extends Component{
         width: '100%',
         height: 'auto',
         marginTop: 10,
+        backgroundColor: 'white'
     },
     button:{
         backgroundColor:'#7b68ee',
@@ -239,7 +237,7 @@ class Post extends Component{
        justifyContent: 'center',
        alignItems: 'center',
         backgroundColor: '#48d1cc',
-        width: 300,
+        width: '100%',
         height: 100,
        
     },
@@ -256,11 +254,12 @@ class Post extends Component{
     },
     comentar:{
         height: 20, 
+        marginLeft: '3px',
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: 'black',
         borderStyle: 'solid',
         borderRadius: 6,
-  
+        fontSize: 15,
     },
     cadaComment:{
         marginTop: 20,
@@ -401,6 +400,9 @@ class Post extends Component{
         width: '50%', 
         flexDirection: 'row',
 
+    },
+    texto:{
+        marginBottom: '1px'
     }
 
 })
