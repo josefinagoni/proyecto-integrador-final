@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         marginTop: 30,
         borderRadius: 4,
-
         marginBottom:500,
         width:'auto',
         justifyContent:'space-around'

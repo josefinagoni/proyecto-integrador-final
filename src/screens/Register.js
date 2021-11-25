@@ -62,6 +62,7 @@ class Register extends Component{
 const styles = StyleSheet.create({
     formContainer:{
         marginLeft:1,
+        paddingHorizontal:10,
         width: '100%',
         height: 'auto',
         justifyContent: 'center',
