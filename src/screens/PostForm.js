@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
-        width: '40%',
+        width: '35%',
         justifyContent: 'space-around',
         marginBottom: 5,
         marginTop: 10,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     textButton:{
             color: 'black',
             flex: 2,
-            flexDirection: 'row',
+            flexDirection: 'column',
             alignItems: 'center',
             width: 'auto',
 

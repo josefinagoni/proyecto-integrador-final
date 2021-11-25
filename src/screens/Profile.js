@@ -62,7 +62,6 @@ class Profile extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        
         width: 'auto',
         alignItems: 'center',
         paddingVertical:15,
@@ -94,14 +93,15 @@ const styles = StyleSheet.create({
     touchableText:{
         fontWeight: 'bold',
         color:'black',
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: 20,
     },
     sectionIcon: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'left',
         alignItems: 'center',
-        padding: 10,
+        padding: 20,
         backgroundColor: '#dc3545',
         marginTop: 30,
         borderRadius: 4,

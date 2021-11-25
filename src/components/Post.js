@@ -26,9 +26,9 @@ class Post extends Component{
         })
         }
 
-        if(this.props.postData.data.cantComments){
+        if(this.props.postData.data.comment){
             this.setState({
-            cantComments:this.props.postData.data.cantComments.length,  
+            cantComments:this.props.postData.data.comment.length,  
         })
         }
         
@@ -82,7 +82,7 @@ class Post extends Component{
         .then( res =>{
             this.setState({
                 comment:'',
-                cantComments: this.props.postData.data.cantComments.length + 1
+                cantComments: this.props.postData.data.comment.length + 1
             })
         })
         .catch(e => console.log(e))
@@ -334,7 +334,7 @@ class Post extends Component{
         alignItems: 'flex-start',
         width: '90%',
         justifyContent: 'space-around',
-        marginBottom: 5
+        
 
     },
     columna:{
@@ -399,8 +399,7 @@ class Post extends Component{
     },
     
     imagen:{
-        height: 200,
-        marginTop: 20,
+        height: 250,
         marginBottom: 15,
 
     },
