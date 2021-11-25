@@ -253,12 +253,11 @@ class Post extends Component{
         borderColor: 'black'
     },
     comentar:{
-        height:20,
         paddingVertical:15,
         paddingHorizontal: 10,
         width: '100%',
         borderWidth:1,
-        borderColor: '#ccc',
+        borderColor: 'black',
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
