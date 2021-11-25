@@ -159,7 +159,7 @@ class Post extends Component{
                     <FlatList 
                     data= {this.props.postData.data.comment}
                     keyExtractor = { oneComment => oneComment.id}
-                    renderItem = { ({item}) => <Text> @{item.author}: {item.comment}</Text> } 
+                    renderItem = { ({item}) => <Text> @{item.author}:   {item.comment}</Text> } 
                     style={styles.cadaComment}
                     
                 />
@@ -253,13 +253,15 @@ class Post extends Component{
         borderColor: 'black'
     },
     comentar:{
-        height: 20, 
-        marginLeft: '3px',
-        borderWidth: 1,
-        borderColor: 'black',
+        height:20,
+        paddingVertical:15,
+        paddingHorizontal: 10,
+        width: '100%',
+        borderWidth:1,
+        borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        fontSize: 15,
+        marginVertical:10,
     },
     cadaComment:{
         marginTop: 20,
