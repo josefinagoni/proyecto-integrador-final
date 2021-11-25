@@ -334,7 +334,7 @@ class Post extends Component{
         alignItems: 'flex-start',
         width: '90%',
         justifyContent: 'space-around',
-        marginBottom: 5
+        
 
     },
     columna:{
@@ -399,8 +399,7 @@ class Post extends Component{
     },
     
     imagen:{
-        height: 200,
-        marginTop: 20,
+        height: 250,
         marginBottom: 15,
 
     },
