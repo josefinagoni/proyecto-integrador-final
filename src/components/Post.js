@@ -142,7 +142,14 @@ class Post extends Component{
 
                 <View style={styles.columna}>
                     <Icon style={styles.textIcon} name="document-text" type="ionicon" size={20} color="#000"/>
-                    <Text style={styles.textoPost}>{this.props.postData.data.texto}</Text>
+
+                    {this.props.postData.data.texto == '' ?
+                <Text>El usuario no comentó su foto </Text>   :
+                <Text style={styles.textoPost}>{this.props.postData.data.texto}</Text>
+
+
+                }
+            
                 </View>
 
                 <TouchableOpacity  style={styles.columna} onPress={()=>this.showModal()}>

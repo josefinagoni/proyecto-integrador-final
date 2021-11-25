@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'pink'
+        backgroundColor:'pink',
         
     },
     input:{
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
-        width: '100%'
+        width: '100%',
     },
     icon: {
         padding: 5,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginBottom:500,
         width:'auto',
-        justifyContent:'space-around'
+        justifyContent:'space-around',
     },
     textButton:{
             color: 'black',
