@@ -144,7 +144,7 @@ class Post extends Component{
                     <Icon style={styles.textIcon} name="document-text" type="ionicon" size={20} color="#000"/>
 
                     {this.props.postData.data.texto == '' ?
-                <Text>El usuario no comentó su foto </Text>   :
+                <Text style={styles.textoPost} >El usuario no puso una descripción </Text>   :
                 <Text style={styles.textoPost}>{this.props.postData.data.texto}</Text>
 
 
