@@ -68,9 +68,9 @@ class Search extends Component {
 const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
-        marginTop: 20,
+        backgroundColor: 'pink',
         alignItems: 'center',
-        width: '100%',
+        width: '100%'
     },
     input:{
         height:75,
@@ -84,20 +84,19 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     button:{
-        backgroundColor:'#28a745',
-        padding: 5,
-        textAlign: 'center',
-        borderRadius:4, 
-        borderWidth:1,
-        borderStyle: 'solid',
-        borderColor: '#28a745',
-        flex: 2,
+        flex: 1,
         flexDirection: 'row',
-        flexWrap: 'wrap',
         alignItems: 'center',
-        width: '30%',
-        justifyContent: 'space-around',
-        marginBottom: 5,
+        padding: 10,
+        backgroundColor: 'white',
+        marginTop: 30,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: 'black',
+        marginBottom:500,
+        width:'auto',
+        height:30,
+        justifyContent:'space-around'
     },
     textButton:{
         color: 'black',

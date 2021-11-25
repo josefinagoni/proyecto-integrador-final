@@ -230,8 +230,7 @@ class Post extends Component{
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#7b68ee',
-        marginTop: 20,
+        borderColor: 'black',
     },
     buttonNo:{
         backgroundColor:'red',
@@ -276,6 +275,7 @@ class Post extends Component{
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+
     },
     cadaComment:{
         marginTop: 20,

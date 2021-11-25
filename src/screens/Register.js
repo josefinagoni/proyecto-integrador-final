@@ -63,9 +63,8 @@ class Register extends Component{
 
 const styles = StyleSheet.create({
     formContainer:{
-        padding: 10,
-        marginTop: 20,
-        width: '98%',
+        marginLeft:1,
+        width: '100%',
         height: 'auto',
         justifyContent: 'center',
         alignItems: 'center',
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginLeft: 4, 
+        backgroundColor: 'pink'
     },
     icon: {
         padding: 5,
@@ -86,7 +85,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'left',
     color: 'black',
-    fontWeight: '600'
+    fontWeight: '600',
+    marginTop: 5
     }, 
     input:{
         height:20,
@@ -94,27 +94,25 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         width: '100%',
         borderWidth:1,
-        borderColor: '#ccc',
+        borderColor: 'negro',
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
     },
     button:{
-        backgroundColor:'#28a745',
-        padding: 5,
-        textAlign: 'center',
-        borderRadius:4, 
-        borderWidth:1,
-        borderStyle: 'solid',
-        borderColor: '#28a745',
-        flex: 2,
+        flex: 1,
         flexDirection: 'row',
-        flexWrap: 'wrap',
         alignItems: 'center',
-        width: '40%',
-        justifyContent: 'space-around',
-        marginBottom: 5,
-        marginTop: 10,
+        padding: 10,
+        backgroundColor: 'white',
+        marginTop: 30,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: 'black',
+        marginBottom:500,
+        width:'auto%',
+        height:20,
+        justifyContent:'space-around'
     },
     textButton:{
             color: 'black',

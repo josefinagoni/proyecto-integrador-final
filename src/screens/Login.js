@@ -57,22 +57,23 @@ class Login extends Component{
 
 const styles = StyleSheet.create({
     formContainer:{
-        marginTop: 5,
-        width: '98%',
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth:1,
         borderColor: '#ccc',
         borderStyle: 'solid',
         borderRadius: 6,
-        marginLeft: 4, 
+        backgroundColor: 'pink'
     },
     
     title:{
     fontSize: 22,
     textAlign: 'left',
     color: 'black',
-    fontWeight: '600'
+    fontWeight: '600',
+    marginTop: 5
+
     }, 
     input:{
         height:20,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         width: '100%',
         borderWidth:1,
-        borderColor: '#ccc',
+        borderColor: 'black',
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
@@ -93,21 +94,17 @@ const styles = StyleSheet.create({
         width: 'auto',
     },
     button:{
-        backgroundColor:'#28a745',
-        padding: 5,
-        textAlign: 'center',
-        borderRadius:4, 
-        borderWidth:1,
-        borderStyle: 'solid',
-        borderColor: '#28a745',
-        flex: 2,
+        flex: 1,
         flexDirection: 'row',
-        flexWrap: 'wrap',
         alignItems: 'center',
-        width: '35%',
-        justifyContent: 'space-around',
-        marginBottom: 5,
-        marginTop: 10,
+        padding: 10,
+        backgroundColor: 'green',
+        marginTop: 30,
+        borderRadius: 4,
+        marginBottom:500,
+        width:'auto',
+        height: 30,
+        justifyContent:'space-around'
     },
     textButton:{
             color: 'black',
