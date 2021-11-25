@@ -33,14 +33,6 @@ class Register extends Component{
                     keyboardType='email-addres'
                     secureTextEntry={true}/>
                 
-                
-            
-                <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}
-                disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? <Text> </Text> :false} >
-                    <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
-                    <Text style={styles.textButton}>Registrarse</Text> 
-                </TouchableOpacity>
-           
                 <Text style={styles.textError}> {this.props.error.message} </Text>
 
                 { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
@@ -48,6 +40,12 @@ class Register extends Component{
 
                 null
                 }     
+            
+                <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}
+                disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? <Text> </Text> :false} >
+                    <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
+                    <Text style={styles.textButton}>Registrarse</Text> 
+                </TouchableOpacity>
 
                
 

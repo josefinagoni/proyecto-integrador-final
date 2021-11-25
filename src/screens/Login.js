@@ -31,6 +31,14 @@ class Login extends Component{
                     secureTextEntry={true}
                 />
 
+                <Text style={styles.textError}> {this.props.error.message} </Text>
+
+                    { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
+                <Text style={styles.textCampos}> Recuerde: Debe completar todos los campos </Text> :
+
+                     null
+                    }  
+
             
                  <TouchableOpacity  style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}
                  disabled={this.state.email =='' || this.state.password =='' ? 
@@ -40,13 +48,6 @@ class Login extends Component{
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.textError}> {this.props.error.message} </Text>
-
-                { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
-                <Text style={styles.textCampos}> Recuerde: Debe completar todos los campos </Text> :
-
-                    null
-                }  
                    
                
             </View>
