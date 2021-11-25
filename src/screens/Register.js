@@ -36,7 +36,7 @@ class Register extends Component{
                 
             
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}
-                disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? true:false} >
+                disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? <Text> </Text> :false} >
                     <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
                     <Text style={styles.textButton}>Registrarse</Text> 
                 </TouchableOpacity>
@@ -44,7 +44,7 @@ class Register extends Component{
                 <Text style={styles.textError}> {this.props.error.message} </Text>
 
                 { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
-                <Text style={styles.textError}> Debe completar todos los campos </Text> :
+                <Text style={styles.textCampos}> Recuerde: Debe completar todos los campos </Text> :
 
                 null
                 }     
@@ -126,6 +126,9 @@ const styles = StyleSheet.create({
     },
     textError:{
         color: 'red'
+    },
+    textCampos:{
+        color: 'black'
     }
 })
 export default Register;

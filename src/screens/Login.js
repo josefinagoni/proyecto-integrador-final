@@ -31,23 +31,23 @@ class Login extends Component{
                     secureTextEntry={true}
                 />
 
-                {this.props.logueado ? 
-                 <Text style={styles.button}> Gracias! Usted ya ha sido logueado </Text> :
             
                  <TouchableOpacity  style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}
-                 disabled={this.state.email =='' || this.state.password =='' ? true:false}>
+                 disabled={this.state.email =='' || this.state.password =='' ? 
+                 <Text> </Text> : false}>
+
                      <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
                     <Text style={styles.textButton}>Ingresar</Text>
                 </TouchableOpacity>
-                }
 
-            <Text style={styles.textError}> {this.props.error.message} </Text>
+                <Text style={styles.textError}> {this.props.error.message} </Text>
 
-            { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
-                <Text style={styles.textError}> Debe completar todos los campos </Text> :
+                { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
+                <Text style={styles.textCampos}> Recuerde: Debe completar todos los campos </Text> :
 
-                null
-                }     
+                    null
+                }  
+                   
                
             </View>
         )
@@ -119,6 +119,9 @@ const styles = StyleSheet.create({
     },
     textError:{
         color: 'red'
+    },
+    textCampos:{
+        color: 'black'
     }
 
 

@@ -39,23 +39,26 @@ class Search extends Component {
                     onChangeText={(text)=>this.setState({search: text})}
                     placeholder= 'Busqueda de emails de usuarios...'
                     keyboardType= 'default' />
+
+                {this.state.posts ? 
+                    this.state.posts.length > 0 ? 
+                    <FlatList 
+                        data= { this.state.posts }
+                        keyExtractor = { post => post.id}
+                        renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
+                    />
+                :
+                    <Text style={styles.textError} >No hay resultados para su busqueda</Text>
+                :
+                    null
+                }
+
+
                  <TouchableOpacity  style={styles.button} onPress={()=>this.getPosts()}
                     disabled={this.state.search =='' ? true:false}>
                         <Icon style={styles.icon} name="search" type="ionicon" size={20} color="black"/>
                         <Text style={styles.textButton}>Buscar</Text>
                 </TouchableOpacity>
-                {this.state.posts ? 
-                this.state.posts.length > 0 ? 
-                <FlatList 
-                    data= { this.state.posts }
-                    keyExtractor = { post => post.id}
-                    renderItem = { ({item}) => <Post postData={item} />} // <Text>{item.data.texto}</Text>//Podríamos armar un componente <Post > más complejo y rendirazolo con los datos de cada documanto.
-                />
-                :
-                <Text style={styles.textError} >No hay resultados para su busqueda</Text>
-                :
-                null
-                }
 
             </View>
         
@@ -114,7 +117,8 @@ const styles = StyleSheet.create({
         width: 'auto',
     },
     textError:{
-        color: 'red'
+        color: 'red',
+        marginBottom: 20,
     },
 
 })
