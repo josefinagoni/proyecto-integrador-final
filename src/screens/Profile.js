@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical:15,
         paddingHorizontal: 10,
-        height: 'auto',
+        height: '100%',
         backgroundColor: 'pink'
 
         
