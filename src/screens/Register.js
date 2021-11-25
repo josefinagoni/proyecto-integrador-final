@@ -33,16 +33,25 @@ class Register extends Component{
                     keyboardType='email-addres'
                     secureTextEntry={true}/>
                 
-                {this.props.registrado ? 
-                <Text style={styles.button}> Gracias! Usted ya ha sido registrado </Text> :
+                
             
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}
                 disabled={this.state.email =='' || this.state.password =='' || this.state.userName == '' ? true:false} >
                     <Icon style={styles.icon} name="log-in" type="ionicon" size={20} color="black"/>
-                    <Text style={styles.textButton}>Registrarse</Text>      
+                    <Text style={styles.textButton}>Registrarse</Text> 
                 </TouchableOpacity>
-            }
+           
                 <Text style={styles.textError}> {this.props.error.message} </Text>
+
+                { this.state.email =='' || this.state.password =='' || this.state.userName == '' ? 
+                <Text style={styles.textError}> Debe completar todos los campos </Text> :
+
+                null
+                }     
+
+               
+
+               
             
             </View>
             

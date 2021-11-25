@@ -42,6 +42,12 @@ class Login extends Component{
                 }
 
             <Text style={styles.textError}> {this.props.error.message} </Text>
+
+            { this.state.email =='' || this.state.password ==''  ? 
+                <Text style={styles.textError}> Debe completar todos los campos </Text> :
+
+                null
+                }     
                
             </View>
         )
